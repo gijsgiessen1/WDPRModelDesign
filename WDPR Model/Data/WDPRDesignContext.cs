@@ -15,17 +15,72 @@ namespace WDPR_Model.Data
         }
 
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Anonymous_Report> Anonymous_Reports { get; set; }
+        public DbSet<AnonymousReport> AnonymousReports { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Flag> Flags { get; set; }
-        public DbSet<Flagged_Comment> Flagged_Comments { get; set; }
-        public DbSet<Flagged_Report> Flagged_Reports { get; set; }
-        public DbSet<Like> Likes { get; set; }
-        public DbSet<Moderator> Moderators { get; set; }
+        public DbSet<AnonymousReportCategory> AnonymousReportCategories { get; set; }
+        public DbSet<FlagCategory> FlagCategories { get; set; }
+        public DbSet<PublicReport> PublicReports { get; set; }
+        public DbSet<PublicReportCategory> PublicReportCategories { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Vote> Votes { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<User_Address> User_Addresses { get; set; }
-        public DbSet<User_Comment> User_Comments { get; set; }
-        public DbSet<User_Report> User_Reports { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+                modelBuilder.Entity<Role>()
+            .HasMany(c => c.Users)
+            .WithOne(e => e.Role);
+
+            modelBuilder.Entity<Address>()
+          .HasMany(c => c.Users)
+          .WithOne(e => e.Address);
+
+            modelBuilder.Entity<FlagCategory>()
+          .HasMany(c => c.Flags)
+          .WithOne(e => e.FlagCategory);
+
+            modelBuilder.Entity<User>()
+          .HasMany(c => c.Flags)
+          .WithOne(e => e.User);
+
+            modelBuilder.Entity<User>()
+          .HasMany(c => c.Comments)
+          .WithOne(e => e.User);
+
+            modelBuilder.Entity<User>()
+          .HasMany(c => c.Likes)
+          .WithOne(e => e.User);
+
+            modelBuilder.Entity<User>()
+          .HasMany(c => c.Reports)
+          .WithOne(e => e.User);
+
+
+            modelBuilder.Entity<Report>()
+          .HasMany(c => c.Flags)
+          .WithOne(e => e.Report);
+
+            modelBuilder.Entity<Report>()
+          .HasMany(c => c.Comments)
+          .WithOne(e => e.Report);
+
+            modelBuilder.Entity<Report>()
+          .HasMany(c => c.Likes)
+          .WithOne(e => e.Report);
+
+            modelBuilder.Entity<PublicReportCategory>()
+          .HasMany(c => c.PublicReports)
+          .WithOne(e => e.publicReportCategory);
+
+            modelBuilder.Entity<Vote>()
+            .HasKey(o => new { o.ReportId, o.UserId });
+
+
+
+        }
+
     }
+    
 }

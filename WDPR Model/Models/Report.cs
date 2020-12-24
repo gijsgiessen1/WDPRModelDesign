@@ -8,10 +8,14 @@ namespace WDPR_Model.Models
     public class Report
     {
         public int Id { get; set; }
+
         public string Title { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public string Description { get; set; }
         public string Content { get; set; }
-        public ICollection<User_Report> User_Reports { get; set; }
-        public ICollection<Flagged_Report> Flagged_Reports { get; set; }
-        public ICollection<Like> Likes { get; set; }
+        public string Coordinates { get; set; }
+        public ICollection<Vote> Likes { get; set; }
+        public ICollection<Flag> Flags { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

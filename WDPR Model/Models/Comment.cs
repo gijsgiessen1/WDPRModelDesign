@@ -9,7 +9,9 @@ namespace WDPR_Model.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public ICollection<User_Comment> User_Comments { get; set; }
-        public ICollection<Flagged_Comment> Flagged_Comments { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public User User { get; set; }
+        public Report Report { get; set; }
+      
     }
 }

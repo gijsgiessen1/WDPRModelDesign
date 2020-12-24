@@ -9,12 +9,16 @@ namespace WDPR_Model.Models
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
-        public ICollection<User_Address> User_Addresses { get; set; }
-        public ICollection<User_Report> User_Reports { get; set; }
-        public ICollection<User_Comment> User_Comments { get; set; }
-        public ICollection<Like> Likes { get; set; }
+        public string DisplayName { get; set; }
+        public string ProfilePicture { get; set; }
+        public ICollection<Vote> Likes { get; set; }
         public ICollection<Flag> Flags { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<PublicReport> Reports { get; set; }
+        public Role Role { get; set; }
+        public Address Address { get; set; }
     }
 }

@@ -9,12 +9,13 @@ namespace WDPR_Model.Models
     {
         public int Id { get; set; }
 
-        public string Address_line { get; set; }
-
-        public string Postal_code { get; set; }
-
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string PostalCode { get; set; }
         public string City { get; set; }
+        public string Country { get; set; }
+        public ICollection<User> Users { get; set; }
 
-        public ICollection<User_Address> User_Addresses { get; set; }
+        
     }
 }

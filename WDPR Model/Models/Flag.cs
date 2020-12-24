@@ -8,11 +8,12 @@ namespace WDPR_Model.Models
     public class Flag
     {
         public int Id { get; set; }
-        public string Urgency { get; set; }
-        public string Category { get; set; }
-        public bool Is_Dealth_With { get; set; }
-        public ICollection<Flagged_Comment> Flagged_Comments { get; set; }
-        public ICollection<Flagged_Report> Flagged_Reports { get; set; }
+        
+        public string Note { get; set; }
+        public bool IsDealtWith { get; set; }
+        public FlagCategory FlagCategory { get; set; }
+        public User User { get; set; }
+        public Report Report { get; set; }
 
     }
 }

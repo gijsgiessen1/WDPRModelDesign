@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WDPR_Model.Models
 {
-    public class Moderator : User
+    public class AnonymousReport : Report
     {
-        public ICollection<Flag> Assigned_Flags { get; set; }
+       public AnonymousReportCategory AnonymousReportCategory { get; set; }
     }
 }
